@@ -10,4 +10,4 @@ def games(request):
     """The page for All Board Games"""
     games = Game.objects.order_by('-date_added')
     context = { 'games': games }
-    return render(request, 'boardgames/games.html')
+    return render(request, 'boardgames/games.html', context)
