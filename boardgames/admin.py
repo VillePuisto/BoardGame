@@ -1,6 +1,6 @@
 from django.contrib import admin
-
-# Register your models here.
-from .models import Game
+from boardgames.models import Game, GameInfo
 
 admin.site.register(Game)
+admin.site.register(GameInfo)
+
