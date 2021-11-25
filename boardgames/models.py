@@ -16,7 +16,7 @@ class GameInfo(models.Model):
     #Info about a board game, loaning clicked by owner
     #Gamekey = models.ForeignKey(Game)
     description = models.TextField(default="describe your game")
-    onLoan = models.BooleanField(default=False)
+    on_loan = models.BooleanField(default=False)
     date_modified = models.DateTimeField(auto_now_add=True)
 
     #delete description when game is deleted
