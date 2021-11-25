@@ -3,7 +3,12 @@
 *.pyc
 *.swp
 __pycache__/
-*.sqlite3
+db.sqlite3
 db.sqlite3-journal
 local_settings.py
+
+### Django.Python Stack ###
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
 
