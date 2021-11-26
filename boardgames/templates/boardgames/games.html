@@ -4,7 +4,7 @@
 <h2>All Board Games</h2>
 <ul>
     {% for game in games %}
-    <li>{{ game }}</li>
+    <li><a href="{% url 'boardgames:game' game.id %}">{{ game }}</a></li>
     {% empty %}
     <li>No games have been added yet.</li>
     {% endfor %}
