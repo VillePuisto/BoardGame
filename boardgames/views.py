@@ -74,3 +74,12 @@ def edit_loan(request, loan_id):
 
     context = {'loan': loan, 'game': game, 'form': form}
     return render(request, 'boardgames/edit_loan.html', context)
+
+def loan_delete(request, loan):
+    loan = Loan.objects.get(id=loan)  # Get your current cat
+
+    if request.method == 'POST':         # If method is POST,
+        loan.delete()                     # delete the cat.
+        return redirect('/games')             # Finally, redirect to the homepage.
+
+    return render(request, 'boardgames/games', {'loan': loan })

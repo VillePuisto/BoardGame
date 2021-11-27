@@ -11,5 +11,9 @@
         {{ form.as_p }}
         <button name="submit">Save changes</button>
     </form>
+    <form action="{% url 'boardgames:loan_delete' loan.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Return game">
+    </form>
 
     {% endblock content %}
