@@ -1,6 +1,6 @@
 from django.contrib import admin
-from boardgames.models import Game, GameInfo
+from boardgames.models import Game, Loan
 
 admin.site.register(Game)
-admin.site.register(GameInfo)
+admin.site.register(Loan)
 
