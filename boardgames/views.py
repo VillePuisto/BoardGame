@@ -57,3 +57,29 @@ def game(request, game_id):
     context = {'game': game, 'loans': loans}
     return render(request, 'boardgames/game.html', context)
 
+def edit_loan(request, loan_id):
+    """Edit an existing loan."""
+    loan = Loan.objects.get(id=loan_id)
+    game = loan.game
+
+    if request.method != 'POST':
+        #Initial request; pre-fill form with the current loan.
+        form = LoanForm(instance=loan)
+    else:
+        #POST data submitted; Process data
+        form = LoanForm(instance=loan, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('boardgames:game', game_id=game.id)
+
+    context = {'loan': loan, 'game': game, 'form': form}
+    return render(request, 'boardgames/edit_loan.html', context)
+
+def loan_delete(request, loan):
+    loan = Loan.objects.get(id=loan)  # Get your current cat
+
+    if request.method == 'POST':         # If method is POST,
+        loan.delete()                     # delete the cat.
+        return redirect('/games')             # Finally, redirect to the homepage.
+
+    return render(request, 'boardgames/games', {'loan': loan })

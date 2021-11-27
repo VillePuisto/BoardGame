@@ -8,9 +8,12 @@
 {% for loan in loans %}
     <li>
         
-        <p>{{ loan.loaner }} {% if loan.on_loan == True %} has loaned this game
-{%else%} None</p>
+        <p>{{ loan.loaner }} {% if loan.on_loan == True %} has loaned this game.
+{%else%} This game is available to loan.</p>
 {%endif%}
+        <p>
+                <a href="{% url 'boardgames:edit_loan' loan.id %}">Edit loan</a>
+        </p>
         </li>
 {%empty%}
 <li>This game is available.</li>
