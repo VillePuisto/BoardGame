@@ -1,4 +1,4 @@
-{% extends "learning_logs/base.html" %}
+{% extends "boardgames/base.html" %}
 
 {% block content %}
   <form method='post' action="{% url 'users:register' %}">
@@ -7,4 +7,4 @@
     <button name='submit'>Register</button>
     <input type='hidden' name='next' value="{% url 'boardgames:index' %}" />
   </form>
-{% endblock content %
+{% endblock content %}
