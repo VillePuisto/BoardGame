@@ -18,5 +18,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
     path('', include('boardgames.urls')),
 ]
+# Handle 404 urls
+handler404 = 'boardgames.views.error_404_view'
