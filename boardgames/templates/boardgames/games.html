@@ -1,14 +1,21 @@
 {% extends "boardgames/base.html" %}
 
+{% block page_header %}
+  <h1>Board Games</h1>
+{% endblock page_header %}
+
 {% block content %}
 <h2>All Board Games</h2>
 <ul>
     {% for game in games %}
-    <li><a href="{% url 'boardgames:game' game.id %}">{{ game }}</a></li>
+        <li><h3>
+            <a href="{% url 'boardgames:game' game.id %}">{{ game }}</a>
+        </h3></li>
     {% empty %}
-    <li>No games have been added yet.</li>
+        <li><h3>No games have been added yet.</h3></li>
     {% endfor %}
     </ul>
 
-    <a href="{% url 'boardgames:new_game' %}">Add a new game</a>
+    <h3><a href="{% url 'boardgames:new_game' %}">Add a new game</a></h3>
+    
 {% endblock content %}

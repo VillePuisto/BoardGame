@@ -1,4 +1,14 @@
 {% extends "boardgames/base.html" %}
-{% block content %}
-<p>Board Games website helps you keep track of your games. You can also borrow games from others.</p>
-{% endblock content %}
+
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">Borrow board games from others.</h1>
+
+    <p class="lead">List all the board games you own and borrow games from others. Keep track of who
+        has your game and find out which games are available.
+    </p>
+
+    <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+        role="button">Register &raquo;</a>
+  </div>
+{% endblock page_header %}
