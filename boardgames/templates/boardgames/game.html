@@ -12,6 +12,7 @@
 {% for loan in loans %}
 <div class="card mb-3">
         <h4 class="card-header">
+          {{ game.date_added|date:'M d, Y H:i' }}
           <small><a href="{% url 'boardgames:edit_loan' loan.id %}">
               Edit loan</a></small>
         </h4>
