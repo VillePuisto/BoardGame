@@ -18,6 +18,5 @@ urlpatterns= [
     url(r'^delete/(?P<loan>[0-9]+)/$', views.loan_delete, name='loan_delete'),
     #Page for editing a game
     path('edit_game/<int:game_id>/', views.edit_game, name='edit_game'),
-    #url(r'^delete/(?P<game>[0-9]+)/$', views.game_delete, name='game_delete'),
     
 ]

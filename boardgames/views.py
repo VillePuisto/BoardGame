@@ -103,7 +103,6 @@ def loan_delete(request, loan):
 def edit_game(request, game_id):
     """Edit an existing game."""
     game = Game.objects.get(id=game_id)
-    #game = loan.game
 
     if request.method != 'POST':
         # Initial request; pre-fill form with the current game.
@@ -117,19 +116,6 @@ def edit_game(request, game_id):
 
     context = {'game': game, 'form': form}
     return render(request, 'boardgames/edit_game.html', context)
-
-
-#@login_required
-#def game_delete(request, game):
-#    game = Game.objects.get(id=game)  # Get your current game
-
- #   if request.method == 'POST':         # If method is POST,
-  #      game.delete()                     # delete the game.
-        # Finally, redirect to the All games page.
-   #     return redirect('/games')
-
-    #return render(request, 'boardgames/games', {'game': game})
-
 
 # Directs to 404 page when not found a page
 def error_404_view(request, exception):
