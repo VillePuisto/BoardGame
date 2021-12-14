@@ -90,10 +90,10 @@ def edit_loan(request, loan_id):
 
 @login_required
 def loan_delete(request, loan):
-    loan = Loan.objects.get(id=loan)  # Get your current cat
+    loan = Loan.objects.get(id=loan)  # Get your current loan
 
     if request.method == 'POST':         # If method is POST,
-        loan.delete()                     # delete the cat.
+        loan.delete()                     # delete the loan.
         # Finally, redirect to the homepage.
         return redirect('/games')
 
