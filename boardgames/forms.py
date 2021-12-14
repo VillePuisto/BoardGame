@@ -6,8 +6,8 @@ from .models import Game, Loan
 class GameForm(forms.ModelForm):
     class Meta:
         model = Game
-        fields = ['text', 'owner']
-        labels = {'text': '', 'owner': ''}
+        fields = ['text', 'description', 'owner']
+        labels = {'text': '', 'description': '', 'owner': ''}
 
 class LoanForm(forms.ModelForm):
     class Meta:

@@ -6,31 +6,32 @@
 
 {% block content %}
 
+<p>Description: {{ game.description }}</p>
+<p>Owner: {{ game.owner }}</p>
 
-<p>{{ game }}</p>
-<ul>
 {% for loan in loans %}
+<p>{{ loan.loaner }} {% if loan.on_loan == True %} has loaned this game. 
+  This game is not available at the moment.
 <div class="card mb-3">
         <h4 class="card-header">
-          {{ game.date_added|date:'M d, Y H:i' }}
           <small><a href="{% url 'boardgames:edit_loan' loan.id %}">
               Edit loan</a></small>
         </h4>
-        <div class="card-body">
-          {{ loan.loaner|linebreaks }}
-        </div>
+
       </div>
         
-        <p>{{ loan.loaner }} {% if loan.on_loan == True %} has loaned this game.
 {%else%} This game is available to loan.</p>
 {%endif%}
 
 {%empty%}
 <p>This game is available.</p>
-{%endfor%}
-</ul>
 <p><a href="{% url 'boardgames:new_loan' game.id %}">Loan this game</a></p>
+{%endfor%}
 
-    
+<h4 class="card-header">
+  <small><a href="{% url 'boardgames:edit_game' game.id %}">
+      Edit game</a></small>
+</h4>
+
 
 {%endblock content%}

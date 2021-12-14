@@ -24,7 +24,7 @@ def games(request):
 def new_game(request):
     """Add a new game."""
     if request.method != 'POST':
-        # No data submittes; create a blank form.
+        # No data submitted; create a blank form.
         form = GameForm()
     else:
         # POST data submitted; process data.
@@ -98,6 +98,37 @@ def loan_delete(request, loan):
         return redirect('/games')
 
     return render(request, 'boardgames/games', {'loan': loan})
+
+@login_required
+def edit_game(request, game_id):
+    """Edit an existing game."""
+    game = Game.objects.get(id=game_id)
+    #game = loan.game
+
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current game.
+        form = GameForm(instance=game)
+    else:
+        # POST data submitted; Process data
+        form = GameForm(instance=game, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('boardgames:game', game_id=game.id)
+
+    context = {'game': game, 'form': form}
+    return render(request, 'boardgames/edit_game.html', context)
+
+
+#@login_required
+#def game_delete(request, game):
+#    game = Game.objects.get(id=game)  # Get your current game
+
+ #   if request.method == 'POST':         # If method is POST,
+  #      game.delete()                     # delete the game.
+        # Finally, redirect to the All games page.
+   #     return redirect('/games')
+
+    #return render(request, 'boardgames/games', {'game': game})
 
 
 # Directs to 404 page when not found a page
