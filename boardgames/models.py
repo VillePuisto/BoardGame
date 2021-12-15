@@ -1,13 +1,11 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Game(models.Model):
     """The Board Game"""
     text = models.CharField(max_length=250)
-    # makeshift owner field, self entered. Need user accounts to have auto tracked
-    owner = models.JSONField(default="owner")
+    description = models.TextField(default="Describe your game")
+    owner = models.CharField(default="Owner", max_length=250)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -16,9 +14,8 @@ class Game(models.Model):
 
 
 class Loan(models.Model):
-    # Info about a board game, loaning clicked by owner
-    #Gamekey = models.ForeignKey(Game)
-    loaner = models.TextField(default="write your name")
+    # Loaning the game, loaner writes their name and ticks a box
+    loaner = models.CharField(max_length=50, default="Write your name")
     on_loan = models.BooleanField(default=False)
     date_modified = models.DateTimeField(auto_now_add=True)
 
@@ -26,5 +23,5 @@ class Loan(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
     def __str__(self):
-        # return the first bit of the description
-        return self.loaner[:50] + "..."
+        # return name of the loaner
+        return self.loaner[:50]

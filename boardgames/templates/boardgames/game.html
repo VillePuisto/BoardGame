@@ -6,31 +6,36 @@
 
 {% block content %}
 
+<p><a href="{% url 'boardgames:edit_game' game.id %}">
+  Edit game</a></p>
+  
+<p>Description: {{ game.description }}</p>
+<p>Owner: {{ game.owner }}</p>
 
-<p>{{ game }}</p>
-<ul>
-{% for loan in loans %}
-<div class="card mb-3">
-        <h4 class="card-header">
-          {{ game.date_added|date:'M d, Y H:i' }}
-          <small><a href="{% url 'boardgames:edit_loan' loan.id %}">
+  {% for loan in loans %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        <small><a href="{% url 'boardgames:edit_loan' loan.id %}">
               Edit loan</a></small>
         </h4>
         <div class="card-body">
-          {{ loan.loaner|linebreaks }}
+          <p>{{ loan.loaner }} {% if loan.on_loan == True %} has loaned this game 
+            {{ loan.date_modified|date:'M d, Y H:i' }}.
         </div>
       </div>
         
-        <p>{{ loan.loaner }} {% if loan.on_loan == True %} has loaned this game.
-{%else%} This game is available to loan.</p>
 {%endif%}
 
 {%empty%}
-<p>This game is available.</p>
-{%endfor%}
-</ul>
-<p><a href="{% url 'boardgames:new_loan' game.id %}">Loan this game</a></p>
+  <div class="card mb-3">
+    <h4 class="card-header">
+      <small><a href="{% url 'boardgames:new_loan' game.id %}">Loan this game</a></small>
+      </h4>
+      <div class="card-body">
+        <p>This game is available.
+      </div>
+    </div>
 
-    
+{%endfor%}
 
 {%endblock content%}
