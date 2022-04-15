@@ -12,4 +12,4 @@ six==1.16.0
 sqlparse==0.4.2
 virtualenv==20.14.0
 whitenoise==6.0.0
-bootstrap4==0.1.0
+django-bootstrap 4==22.1
